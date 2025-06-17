@@ -31,9 +31,9 @@ Q: What misconception do your coworkers have about you?
 A: Some might think I’m just a code-crunching data nerd, but I’m also a strategic thinker who bridges technical solutions with business needs, delivering impactful results with a collaborative flair.
 
 Q: How do you push your boundaries and limits?
-A: I dive into challenging projects like building news research tools with LLMs or optimizing trading algorithms, constantly refining my skills in Python, TensorFlow, and data preprocessing to deliver cutting-edge solutions.
-
+A: I dive into challenging projects like building news research tools with LLMs or optimizing trading algorithms, constantly refining my skills in Python, TensorFlow, and data preprocessing to deliver cutting-edge solutions.
 """
+
 @app.route('/')
 def serve_index():
     return send_file('index.html')
@@ -70,4 +70,6 @@ def ask():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Get port from environment variable or default to 8080
+    port = int(os.getenv('PORT', 8080))
+    app.run(host='0.0.0.0', port=port, debug=False)  # Bind to 0.0.0.0 for Render
